@@ -1,0 +1,461 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BioquimicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Orden">
+          <Key>
+            <PropertyRef Name="OrdenId" />
+          </Key>
+          <Property Name="OrdenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrepagaId" Type="int" Nullable="false" />
+          <Property Name="NroOrden" Type="int" Nullable="false" />
+          <Property Name="PacienteNombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaAtencion" Type="date" Nullable="false" />
+          <Property Name="PacienteDNI" Type="int" />
+          <Property Name="PacienteFechaNacimiento" Type="date" />
+          <Property Name="DiscriminaIVA" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Practica">
+          <Key>
+            <PropertyRef Name="PracticaId" />
+          </Key>
+          <Property Name="PracticaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Nomenclador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UB" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracticasOrden">
+          <Key>
+            <PropertyRef Name="PracticaOrdenId" />
+          </Key>
+          <Property Name="PracticaOrdenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PracticaId" Type="int" Nullable="false" />
+          <Property Name="OrdenId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prepaga">
+          <Key>
+            <PropertyRef Name="PrepagaId" />
+          </Key>
+          <Property Name="PrepagaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Domicilio" Type="varchar" MaxLength="250" />
+          <Property Name="NBU" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DiscriminaIVA" Type="bit" Nullable="false" />
+          <Property Name="PorcentajeIVA" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="ProfesionalId" />
+          </Key>
+          <Property Name="ProfesionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Domicilio" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CUIT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DNI" Type="int" Nullable="false" />
+          <Property Name="MP" Type="varchar" MaxLength="50" />
+          <Property Name="MN" Type="varchar" MaxLength="50" />
+          <Property Name="Provincia" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Orden_Prepaga">
+          <End Role="Prepaga" Type="Self.Prepaga" Multiplicity="1" />
+          <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prepaga">
+              <PropertyRef Name="PrepagaId" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="PrepagaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticasOrden_Orden">
+          <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+          <End Role="PracticasOrden" Type="Self.PracticasOrden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orden">
+              <PropertyRef Name="OrdenId" />
+            </Principal>
+            <Dependent Role="PracticasOrden">
+              <PropertyRef Name="OrdenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticasOrden_Practica">
+          <End Role="Practica" Type="Self.Practica" Multiplicity="1" />
+          <End Role="PracticasOrden" Type="Self.PracticasOrden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practica">
+              <PropertyRef Name="PracticaId" />
+            </Principal>
+            <Dependent Role="PracticasOrden">
+              <PropertyRef Name="PracticaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Configuracion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Facturacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaDesde" Type="date" Mode="In" />
+          <Parameter Name="FechaHasta" Type="date" Mode="In" />
+          <Parameter Name="PrepagaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FacturacionConIVA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaDesde" Type="date" Mode="In" />
+          <Parameter Name="FechaHasta" Type="date" Mode="In" />
+          <Parameter Name="PrepagaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PieFacturacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaDesde" Type="date" Mode="In" />
+          <Parameter Name="FechaHasta" Type="date" Mode="In" />
+          <Parameter Name="PrepagaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PracticasCombo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PracticasxOrden" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrdenId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="BioquimicaModelStoreContainer">
+          <EntitySet Name="Orden" EntityType="Self.Orden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Practica" EntityType="Self.Practica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracticasOrden" EntityType="Self.PracticasOrden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prepaga" EntityType="Self.Prepaga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesional" EntityType="Self.Profesional" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Orden_Prepaga" Association="Self.FK_Orden_Prepaga">
+            <End Role="Prepaga" EntitySet="Prepaga" />
+            <End Role="Orden" EntitySet="Orden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticasOrden_Orden" Association="Self.FK_PracticasOrden_Orden">
+            <End Role="Orden" EntitySet="Orden" />
+            <End Role="PracticasOrden" EntitySet="PracticasOrden" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticasOrden_Practica" Association="Self.FK_PracticasOrden_Practica">
+            <End Role="Practica" EntitySet="Practica" />
+            <End Role="PracticasOrden" EntitySet="PracticasOrden" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BioquimicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="ProfesionalId" />
+          </Key>
+          <Property Name="ProfesionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Domicilio" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUIT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="Int32" Nullable="false" />
+          <Property Name="MP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="BioquimicaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Profesionales" EntityType="Self.Profesional" />
+          <EntitySet Name="Practicas" EntityType="BioquimicaModel.Practica" />
+          <EntitySet Name="Prepagas" EntityType="BioquimicaModel.Prepaga" />
+          <FunctionImport Name="PracticasOrden" EntitySet="Practicas" ReturnType="Collection(BioquimicaModel.Practica)">
+          <Parameter Name="OrdenId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PracticasCombo" EntitySet="Practicas" ReturnType="Collection(BioquimicaModel.Practica)" />
+          <EntitySet Name="PracticasOrdenes" EntityType="BioquimicaModel.PracticasOrdenes" />
+          <AssociationSet Name="FK_PracticasOrden_Practica" Association="BioquimicaModel.FK_PracticasOrden_Practica">
+            <End Role="Practica" EntitySet="Practicas" />
+            <End Role="PracticasOrden" EntitySet="PracticasOrdenes" />
+          </AssociationSet>
+          <FunctionImport Name="Encabezado" ReturnType="Collection(BioquimicaModel.Configuracion)" />
+          <FunctionImport Name="Detalle" ReturnType="Collection(BioquimicaModel.Facturacion)">
+            <Parameter Name="FechaDesde" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaHasta" Mode="In" Type="DateTime" />
+            <Parameter Name="PrepagaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Pie" ReturnType="Collection(BioquimicaModel.Pie)">
+            <Parameter Name="FechaDesde" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaHasta" Mode="In" Type="DateTime" />
+            <Parameter Name="PrepagaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Ordenes" EntityType="BioquimicaModel.Orden" />
+          <AssociationSet Name="FK_Orden_Prepaga" Association="BioquimicaModel.FK_Orden_Prepaga">
+            <End Role="Prepaga" EntitySet="Prepagas" />
+            <End Role="Orden" EntitySet="Ordenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticasOrden_Orden" Association="BioquimicaModel.FK_PracticasOrden_Orden">
+            <End Role="Orden" EntitySet="Ordenes" />
+            <End Role="PracticasOrdenes" EntitySet="PracticasOrdenes" />
+          </AssociationSet>
+          <FunctionImport Name="PrepagaEliminar">
+            <Parameter Name="PrepagaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FacturacionConIVA" ReturnType="Collection(BioquimicaModel.FacturacionConIVARow)">
+            <Parameter Name="FechaDesde" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaHasta" Mode="In" Type="DateTime" />
+            <Parameter Name="PrepagaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Practica">
+          <Key>
+            <PropertyRef Name="PracticaId" />
+          </Key>
+          <Property Name="PracticaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Nomenclador" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="PracticasOrdenes" Relationship="BioquimicaModel.FK_PracticasOrden_Practica" FromRole="Practica" ToRole="PracticasOrden" />
+        </EntityType>
+        <EntityType Name="Prepaga">
+          <Key>
+            <PropertyRef Name="PrepagaId" />
+          </Key>
+          <Property Name="PrepagaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NBU" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Ordens" Relationship="BioquimicaModel.FK_Orden_Prepaga" FromRole="Prepaga" ToRole="Orden" />
+          <Property Name="DiscriminaIVA" Type="Boolean" Nullable="false" />
+          <Property Name="PorcentajeIVA" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PracticasOrdenes">
+          <Key>
+            <PropertyRef Name="PracticaOrdenId" />
+          </Key>
+          <Property Name="PracticaOrdenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PracticaId" Type="Int32" Nullable="false" />
+          <Property Name="OrdenId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Practica" Relationship="BioquimicaModel.FK_PracticasOrden_Practica" FromRole="PracticasOrden" ToRole="Practica" />
+          <NavigationProperty Name="Orden" Relationship="BioquimicaModel.FK_PracticasOrden_Orden" FromRole="PracticasOrdenes" ToRole="Orden" />
+        </EntityType>
+        <Association Name="FK_PracticasOrden_Practica">
+          <End Type="BioquimicaModel.Practica" Role="Practica" Multiplicity="1" />
+          <End Type="BioquimicaModel.PracticasOrdenes" Role="PracticasOrden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practica">
+              <PropertyRef Name="PracticaId" />
+            </Principal>
+            <Dependent Role="PracticasOrden">
+              <PropertyRef Name="PracticaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Configuracion">
+          <Property Type="String" Name="Profesional" Nullable="false" MaxLength="103" />
+          <Property Type="String" Name="Domicilio" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CUIT" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="DNI" Nullable="false" />
+          <Property Type="String" Name="MP" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Pie">
+          <Property Type="String" Name="CantidadOrdenes" Nullable="true" MaxLength="513" />
+          <Property Type="Decimal" Name="TotalSinIVA" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalIVA" Nullable="false" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="Facturacion">
+          <Property Type="String" Name="PacienteNombre" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="FechaAtencion" Nullable="false" />
+          <Property Type="String" Name="Prepaga" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Codigo" Nullable="false" />
+          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="37" Scale="4" />
+          <Property Type="Int32" Name="OrdenId" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Orden">
+          <Key>
+            <PropertyRef Name="OrdenId" />
+          </Key>
+          <Property Name="OrdenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrepagaId" Type="Int32" Nullable="false" />
+          <Property Name="NroOrden" Type="Int32" Nullable="false" />
+          <Property Name="PacienteNombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAtencion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PacienteDNI" Type="Int32" />
+          <Property Name="PacienteFechaNacimiento" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Prepagas" Relationship="BioquimicaModel.FK_Orden_Prepaga" FromRole="Orden" ToRole="Prepaga" />
+          <NavigationProperty Name="PracticasOrdenes" Relationship="BioquimicaModel.FK_PracticasOrden_Orden" FromRole="Orden" ToRole="PracticasOrdenes" />
+          <Property Name="DiscriminaIVA" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Orden_Prepaga">
+          <End Type="BioquimicaModel.Prepaga" Role="Prepaga" Multiplicity="1" />
+          <End Type="BioquimicaModel.Orden" Role="Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prepaga">
+              <PropertyRef Name="PrepagaId" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="PrepagaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticasOrden_Orden">
+          <End Type="BioquimicaModel.Orden" Role="Orden" Multiplicity="1" />
+          <End Type="BioquimicaModel.PracticasOrdenes" Role="PracticasOrdenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orden">
+              <PropertyRef Name="OrdenId" />
+            </Principal>
+            <Dependent Role="PracticasOrdenes">
+              <PropertyRef Name="OrdenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="FacturacionConIVARow">
+          <Property Type="Int32" Name="OrdenId" Nullable="false" />
+          <Property Type="String" Name="PacienteNombre" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="FechaAtencion" Nullable="false" />
+          <Property Type="String" Name="Prepaga" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="Codigo" Nullable="false" />
+          <Property Type="Decimal" Name="SinIVA" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="IVA" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="Subtotal" Nullable="true" Precision="37" Scale="4" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BioquimicaModelStoreContainer" CdmEntityContainer="BioquimicaEntities">
+          <EntitySetMapping Name="Profesionales">
+            <EntityTypeMapping TypeName="BioquimicaModel.Profesional">
+              <MappingFragment StoreEntitySet="Profesional">
+                <ScalarProperty Name="ProfesionalId" ColumnName="ProfesionalId" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="CUIT" ColumnName="CUIT" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="MP" ColumnName="MP" />
+                <ScalarProperty Name="MN" ColumnName="MN" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Practicas">
+            <EntityTypeMapping TypeName="BioquimicaModel.Practica">
+              <MappingFragment StoreEntitySet="Practica">
+                <ScalarProperty Name="UB" ColumnName="UB" />
+                <ScalarProperty Name="Nomenclador" ColumnName="Nomenclador" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="PracticaId" ColumnName="PracticaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prepagas">
+            <EntityTypeMapping TypeName="BioquimicaModel.Prepaga">
+              <MappingFragment StoreEntitySet="Prepaga">
+                <ScalarProperty Name="PorcentajeIVA" ColumnName="PorcentajeIVA" />
+                <ScalarProperty Name="DiscriminaIVA" ColumnName="DiscriminaIVA" />
+                <ScalarProperty Name="NBU" ColumnName="NBU" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrepagaId" ColumnName="PrepagaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PracticasOrden" FunctionName="BioquimicaModel.Store.PracticasxOrden" />
+          <FunctionImportMapping FunctionImportName="PracticasCombo" FunctionName="BioquimicaModel.Store.PracticasCombo">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PracticasOrdenes">
+            <EntityTypeMapping TypeName="BioquimicaModel.PracticasOrdenes">
+              <MappingFragment StoreEntitySet="PracticasOrden">
+                <ScalarProperty Name="OrdenId" ColumnName="OrdenId" />
+                <ScalarProperty Name="PracticaId" ColumnName="PracticaId" />
+                <ScalarProperty Name="PracticaOrdenId" ColumnName="PracticaOrdenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Encabezado" FunctionName="BioquimicaModel.Store.Configuracion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BioquimicaModel.Configuracion">
+                <ScalarProperty Name="Profesional" ColumnName="Profesional" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="CUIT" ColumnName="CUIT" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="MP" ColumnName="MP" />
+                <ScalarProperty Name="MN" ColumnName="MN" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Detalle" FunctionName="BioquimicaModel.Store.Facturacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BioquimicaModel.Facturacion">
+                <ScalarProperty Name="PacienteNombre" ColumnName="PacienteNombre" />
+                <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+                <ScalarProperty Name="Prepaga" ColumnName="Prepaga" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="OrdenId" ColumnName="OrdenId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Pie" FunctionName="BioquimicaModel.Store.PieFacturacion" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BioquimicaModel.Pie">
+                <ScalarProperty Name="CantidadOrdenes" ColumnName="CantidadOrdenes" />
+                <ScalarProperty Name="TotalSinIVA" ColumnName="TotalSinIVA" />
+                <ScalarProperty Name="TotalIVA" ColumnName="TotalIVA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Ordenes">
+            <EntityTypeMapping TypeName="BioquimicaModel.Orden">
+              <MappingFragment StoreEntitySet="Orden">
+                <ScalarProperty Name="DiscriminaIVA" ColumnName="DiscriminaIVA" />
+                <ScalarProperty Name="PacienteFechaNacimiento" ColumnName="PacienteFechaNacimiento" />
+                <ScalarProperty Name="PacienteDNI" ColumnName="PacienteDNI" />
+                <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+                <ScalarProperty Name="PacienteNombre" ColumnName="PacienteNombre" />
+                <ScalarProperty Name="NroOrden" ColumnName="NroOrden" />
+                <ScalarProperty Name="PrepagaId" ColumnName="PrepagaId" />
+                <ScalarProperty Name="OrdenId" ColumnName="OrdenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FacturacionConIVA" FunctionName="BioquimicaModel.Store.FacturacionConIVA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BioquimicaModel.FacturacionConIVARow">
+                <ScalarProperty Name="OrdenId" ColumnName="OrdenId" />
+                <ScalarProperty Name="PacienteNombre" ColumnName="PacienteNombre" />
+                <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+                <ScalarProperty Name="Prepaga" ColumnName="Prepaga" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="SinIVA" ColumnName="SinIVA" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
