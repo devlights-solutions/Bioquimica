@@ -84,7 +84,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(633, 769);
+            this.btnCancelar.Location = new System.Drawing.Point(633, 666);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(184, 41);
@@ -107,7 +107,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(833, 827);
+            this.groupBox1.Size = new System.Drawing.Size(833, 724);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -122,11 +122,11 @@
             this.gbxPracticas.Controls.Add(this.btnAgregar);
             this.gbxPracticas.Controls.Add(this.dgvListado);
             this.gbxPracticas.Enabled = false;
-            this.gbxPracticas.Location = new System.Drawing.Point(0, 376);
+            this.gbxPracticas.Location = new System.Drawing.Point(0, 305);
             this.gbxPracticas.Margin = new System.Windows.Forms.Padding(4);
             this.gbxPracticas.Name = "gbxPracticas";
             this.gbxPracticas.Padding = new System.Windows.Forms.Padding(4);
-            this.gbxPracticas.Size = new System.Drawing.Size(828, 374);
+            this.gbxPracticas.Size = new System.Drawing.Size(828, 353);
             this.gbxPracticas.TabIndex = 16;
             this.gbxPracticas.TabStop = false;
             this.gbxPracticas.Text = "Prácticas";
@@ -164,7 +164,7 @@
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblTotal.Location = new System.Drawing.Point(653, 326);
+            this.lblTotal.Location = new System.Drawing.Point(653, 314);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(125, 33);
@@ -178,7 +178,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(555, 326);
+            this.label4.Location = new System.Drawing.Point(555, 314);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 29);
@@ -299,7 +299,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Image = ((System.Drawing.Image)(resources.GetObject("btnAceptar.Image")));
             this.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.Location = new System.Drawing.Point(427, 769);
+            this.btnAceptar.Location = new System.Drawing.Point(427, 666);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(185, 41);
@@ -325,16 +325,16 @@
             this.pnlControles.Controls.Add(this.txtNombre);
             this.pnlControles.Controls.Add(this.label26);
             this.pnlControles.Controls.Add(this.label17);
-            this.pnlControles.Location = new System.Drawing.Point(-3, 59);
+            this.pnlControles.Location = new System.Drawing.Point(-3, 49);
             this.pnlControles.Margin = new System.Windows.Forms.Padding(4);
             this.pnlControles.Name = "pnlControles";
-            this.pnlControles.Size = new System.Drawing.Size(835, 291);
+            this.pnlControles.Size = new System.Drawing.Size(835, 251);
             this.pnlControles.TabIndex = 15;
             // 
             // chxDiscriminaIVA
             // 
             this.chxDiscriminaIVA.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold);
-            this.chxDiscriminaIVA.Location = new System.Drawing.Point(420, 235);
+            this.chxDiscriminaIVA.Location = new System.Drawing.Point(420, 213);
             this.chxDiscriminaIVA.Name = "chxDiscriminaIVA";
             this.chxDiscriminaIVA.Size = new System.Drawing.Size(135, 26);
             this.chxDiscriminaIVA.TabIndex = 7;
@@ -353,7 +353,7 @@
             this.cboPrepaga.ErrorMessage = "";
             this.cboPrepaga.EsObligatorio = true;
             this.cboPrepaga.InvalidateChar = null;
-            this.cboPrepaga.Location = new System.Drawing.Point(421, 183);
+            this.cboPrepaga.Location = new System.Drawing.Point(421, 170);
             this.cboPrepaga.Margin = new System.Windows.Forms.Padding(5);
             this.cboPrepaga.MaxDroppItems = 8;
             this.cboPrepaga.Name = "cboPrepaga";
@@ -367,10 +367,10 @@
             // dtpFechaAtencion
             // 
             this.dtpFechaAtencion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dtpFechaAtencion.Fecha = new System.DateTime(2016, 7, 6, 0, 0, 0, 0);
+            this.dtpFechaAtencion.Fecha = new System.DateTime(2016, 7, 12, 0, 0, 0, 0);
             this.dtpFechaAtencion.FechaMaxima = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaAtencion.FechaMinima = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaAtencion.Location = new System.Drawing.Point(421, 110);
+            this.dtpFechaAtencion.Location = new System.Drawing.Point(421, 102);
             this.dtpFechaAtencion.Margin = new System.Windows.Forms.Padding(5);
             this.dtpFechaAtencion.Name = "dtpFechaAtencion";
             this.dtpFechaAtencion.Size = new System.Drawing.Size(285, 33);
@@ -379,7 +379,7 @@
             // dtpFechaNacimiento
             // 
             this.dtpFechaNacimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dtpFechaNacimiento.Fecha = new System.DateTime(2016, 7, 6, 0, 0, 0, 0);
+            this.dtpFechaNacimiento.Fecha = new System.DateTime(2016, 7, 12, 0, 0, 0, 0);
             this.dtpFechaNacimiento.FechaMaxima = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaNacimiento.FechaMinima = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(421, 37);
@@ -423,7 +423,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(416, 156);
+            this.label3.Location = new System.Drawing.Point(416, 145);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 23);
@@ -435,7 +435,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(416, 81);
+            this.label2.Location = new System.Drawing.Point(416, 77);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 23);
@@ -460,7 +460,7 @@
             this.txtDNI.Disabled = false;
             this.txtDNI.ErrorMessage = "";
             this.txtDNI.EsObligatorio = true;
-            this.txtDNI.Location = new System.Drawing.Point(23, 183);
+            this.txtDNI.Location = new System.Drawing.Point(23, 170);
             this.txtDNI.LongMax = 8;
             this.txtDNI.LongMin = 0;
             this.txtDNI.Margin = new System.Windows.Forms.Padding(5);
@@ -479,7 +479,7 @@
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(23, 110);
+            this.txtNombre.Location = new System.Drawing.Point(23, 102);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 250;
             this.txtNombre.Multiline = true;
@@ -492,7 +492,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(19, 156);
+            this.label26.Location = new System.Drawing.Point(19, 145);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(36, 23);
@@ -504,7 +504,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(17, 81);
+            this.label17.Location = new System.Drawing.Point(17, 77);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(149, 23);
@@ -516,7 +516,7 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTitulo.Location = new System.Drawing.Point(8, 20);
+            this.lblTitulo.Location = new System.Drawing.Point(8, 10);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(84, 35);
@@ -535,7 +535,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 827);
+            this.ClientSize = new System.Drawing.Size(833, 724);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
