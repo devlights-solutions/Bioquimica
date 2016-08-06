@@ -1797,7 +1797,7 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox60">
+                                          <Textbox Name="IVA1">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1818,7 +1818,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox60</rd:DefaultName>
+                                            <rd:DefaultName>IVA1</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>#e6eefc</Color>
@@ -2349,6 +2349,7 @@
                                                     <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                                                   </Style>
                                                 </Textbox>
+                                                <rd:Selected>true</rd:Selected>
                                               </CellContents>
                                             </TablixHeader>
                                           </TablixMember>
@@ -2362,7 +2363,7 @@
                               <Top>1.10067cm</Top>
                               <Left>0.02614cm</Left>
                               <Height>2.4cm</Height>
-                              <Width>16.22775cm</Width>
+                              <Width>16.22773cm</Width>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
