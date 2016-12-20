@@ -14,7 +14,8 @@ namespace Bioquimica.Entidades
     public partial class Pie
     {
         public string CantidadOrdenes { get; set; }
-        public Nullable<decimal> TotalSinIVA { get; set; }
+        public decimal TotalSinIVA { get; set; }
         public decimal TotalIVA { get; set; }
+        public Nullable<decimal> IVA { get; set; }
     }
 }

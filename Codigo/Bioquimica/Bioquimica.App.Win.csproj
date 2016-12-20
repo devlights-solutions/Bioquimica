@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://www.sistemas-aa.com.ar/trabajos/bioquimica/</UpdateUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>27</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -292,7 +292,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Caja.png" />
+    <Content Include="Resources\Caja.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\cancelar.png">
@@ -300,16 +302,24 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cash.png" />
+    <Content Include="Resources\cash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cerrar.png" />
+    <Content Include="Resources\Cerrar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Clipboard.png" />
+    <Content Include="Resources\Clipboard.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\correcto.png" />
+    <Content Include="Resources\correcto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\delete_icon.ico">
@@ -322,16 +332,24 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\edit_add.png" />
+    <Content Include="Resources\edit_add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\editdelete.png" />
+    <Content Include="Resources\editdelete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\error.png" />
+    <Content Include="Resources\error.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Guardar.png" />
+    <Content Include="Resources\Guardar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\ico_edit.ico">
@@ -344,28 +362,44 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ok.png" />
+    <Content Include="Resources\ok.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PNG_actualizar.png" />
+    <Content Include="Resources\PNG_actualizar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PNG_Buscar.png" />
+    <Content Include="Resources\PNG_Buscar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PNG_dollar.png" />
+    <Content Include="Resources\PNG_dollar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PNG_Imprimir.png" />
+    <Content Include="Resources\PNG_Imprimir.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PNG_modificar.png" />
+    <Content Include="Resources\PNG_modificar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\primero.png" />
+    <Content Include="Resources\primero.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\productos.png" />
+    <Content Include="Resources\productos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\refresh.png">
@@ -378,22 +412,42 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\rptFacturacionConIVA.rdl" />
-    <None Include="Resources\rptFacturacion.rdl" />
-    <None Include="Resources\siguiente.png" />
+    <Content Include="Resources\rptFacturacionConIVA.rdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\rptFacturacion.rdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\siguiente.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ultimo.png" />
+    <Content Include="Resources\ultimo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CommonLibraries\MdiTabStrip.dll" />
     <Content Include="favicon.ico" />
-    <Content Include="Resources\favicon.ico" />
-    <Content Include="Resources\OrdenesIcon.png" />
-    <None Include="Resources\icons5918.png" />
-    <None Include="Resources\docs black.png" />
-    <None Include="Resources\Panel Settings.png" />
-    <None Include="Resources\Settings1.png" />
+    <Content Include="Resources\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\OrdenesIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons5918.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\docs black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Panel Settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Settings1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="Microsoft.ReportViewer.Common">

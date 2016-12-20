@@ -118,7 +118,7 @@
       <Fields>
         <Field Name="CantidadOrdenes">
           <DataField>CantidadOrdenes</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TotalSinIVA">
           <DataField>TotalSinIVA</DataField>
@@ -126,6 +126,10 @@
         </Field>
         <Field Name="TotalIVA">
           <DataField>TotalIVA</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="IVA">
+          <DataField>IVA</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
@@ -2349,7 +2353,6 @@
                                                     <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                                                   </Style>
                                                 </Textbox>
-                                                <rd:Selected>true</rd:Selected>
                                               </CellContents>
                                             </TablixHeader>
                                           </TablixMember>
@@ -2561,7 +2564,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=Sum(Fields!TotalSinIVA.Value, "dsPie")</Value>
+                        <Value>=Sum(Fields!TotalSinIVA.Value, "dsPie") - Sum(Fields!SinIVA.Value, "dsIVA")</Value>
                         <Style>
                           <FontSize>12pt</FontSize>
                           <Format>'$'#,0.00</Format>
@@ -2597,7 +2600,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Importe total S/IVA:</Value>
+                        <Value>Pacientes sin IVA:</Value>
                         <Style>
                           <FontFamily>Arial Black</FontFamily>
                           <FontSize>12pt</FontSize>
@@ -2666,7 +2669,30 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Total de IVA:</Value>
+                        <Value>IVA (</Value>
+                        <Style>
+                          <FontFamily>Arial Black</FontFamily>
+                          <FontSize>12pt</FontSize>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!IVA.Value, "dsPie")</Value>
+                        <Style>
+                          <FontFamily>Arial Black</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <Format>0.00;(0.00)</Format>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>%</Value>
+                        <Style>
+                          <FontFamily>Arial Black</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <Format>0.00;(0.00)</Format>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>):</Value>
                         <Style>
                           <FontFamily>Arial Black</FontFamily>
                           <FontSize>12pt</FontSize>
@@ -2710,7 +2736,7 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox54</rd:DefaultName>
-                <Top>2.99063cm</Top>
+                <Top>4.04925cm</Top>
                 <Left>0.09569cm</Left>
                 <Height>0.81167cm</Height>
                 <Width>5.56917cm</Width>
@@ -2746,7 +2772,7 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>CantidadOrdenes</rd:DefaultName>
-                <Top>2.99063cm</Top>
+                <Top>4.04925cm</Top>
                 <Left>5.90491cm</Left>
                 <Height>0.81167cm</Height>
                 <Width>9.89595cm</Width>
@@ -2761,11 +2787,80 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
+              <Textbox Name="Textbox62">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Pacientes con IVA:</Value>
+                        <Style>
+                          <FontFamily>Arial Black</FontFamily>
+                          <FontSize>12pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox54</rd:DefaultName>
+                <Top>3.06119cm</Top>
+                <Left>0.09569cm</Left>
+                <Height>0.81167cm</Height>
+                <Width>5.56917cm</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="CantidadOrdenes5">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Sum(Fields!SinIVA.Value, "dsIVA")</Value>
+                        <Style>
+                          <FontSize>12pt</FontSize>
+                          <Format>'$'#,0.00</Format>
+                          <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>CantidadOrdenes</rd:DefaultName>
+                <Top>3.06119cm</Top>
+                <Left>5.90491cm</Left>
+                <Height>0.81167cm</Height>
+                <Width>9.89595cm</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
             <Top>19.65537cm</Top>
             <Left>0.2667cm</Left>
-            <Height>4.14867cm</Height>
+            <Height>5.19874cm</Height>
             <Width>16.18186cm</Width>
             <ZIndex>25</ZIndex>
             <Style>
@@ -2795,7 +2890,7 @@
             </Style>
           </Rectangle>
         </ReportItems>
-        <Height>239.50995mm</Height>
+        <Height>250.30496mm</Height>
         <Style>
           <Border>
             <Style>None</Style>

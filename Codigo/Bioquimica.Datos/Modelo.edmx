@@ -255,8 +255,9 @@
         </ComplexType>
         <ComplexType Name="Pie">
           <Property Type="String" Name="CantidadOrdenes" Nullable="true" MaxLength="513" />
-          <Property Type="Decimal" Name="TotalSinIVA" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalSinIVA" Nullable="false" Precision="19" />
           <Property Type="Decimal" Name="TotalIVA" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="IVA" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="Facturacion">
           <Property Type="String" Name="PacienteNombre" Nullable="false" MaxLength="250" />
@@ -404,6 +405,7 @@
                 <ScalarProperty Name="CantidadOrdenes" ColumnName="CantidadOrdenes" />
                 <ScalarProperty Name="TotalSinIVA" ColumnName="TotalSinIVA" />
                 <ScalarProperty Name="TotalIVA" ColumnName="TotalIVA" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
